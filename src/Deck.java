@@ -24,8 +24,11 @@ public class Deck {
 		// Probably a better way to do this
 		// Not sure what to do with middle card based on description
 		List<Card> topCut = cards.subList(0, cutPoint);
-		cards.removeAll(topCut); // cards is now lowCut
-		cards.addAll(topCut);
+		List<Card> bottomCut = cards.subList(cutPoint, cards.size());
+		List<Card> newList = new ArrayList<Card>();
+		newList.addAll(bottomCut);
+		newList.addAll(topCut);
+		cards = newList;
 	}
 	
 	public Card deal() {
