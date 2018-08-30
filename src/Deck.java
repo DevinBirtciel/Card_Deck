@@ -11,6 +11,10 @@ public class Deck {
 		this.setCards(cards);
 	}
 	
+	public Deck() {
+		cards = Deck.newOrder();
+	}
+	
 	public void shuffle() {
 		Collections.shuffle(cards);
 	}
@@ -47,7 +51,7 @@ public class Deck {
 	
 	// did you really mean to flip A-K A-K then K-A K-A?
 	// makes the sorting more tricky for real if I were to for loop this based on a comparison
-	public List<Card> newOrder(){
+	public static List<Card> newOrder(){
 		List<Card> cardList = new ArrayList<Card>();
 		for(Suit suit : Suit.values()) {
 			for(Rank rank : Rank.values()) {
@@ -65,6 +69,16 @@ public class Deck {
 	public void setCards(List<Card> cards) {
 		this.cards = cards;
 	}
+
+	@Override
+	public String toString() {
+		String deckString = "";
+		for(int i = 0; i < cards.size(); i++) {
+			deckString += " Card " + i + ": " + cards.get(i).toString();
+		}
+		return deckString;
+	}
+	
 	
 	
 }
