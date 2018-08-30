@@ -2,6 +2,7 @@
 public class Driver {
 
 	public static void main(String[] args) {
+		// TODO Review print outs to determine if things are correct
 		Deck deck = new Deck();
 		System.out.println(deck.toString());
 		deck.shuffle();
