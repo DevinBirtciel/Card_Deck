@@ -45,9 +45,16 @@ public class Deck {
 		return -1; // error response meaning card not in deck
 	}
 	
+	// did you really mean to flip A-K A-K then K-A K-A?
+	// makes the sorting more tricky for real if I were to for loop this based on a comparison
 	public List<Card> newOrder(){
 		List<Card> cardList = new ArrayList<Card>();
-		// TODO implement
+		for(Suit suit : Suit.values()) {
+			for(Rank rank : Rank.values()) {
+				cardList.add(new Card(suit, rank));
+			}
+		}
+		cardList.sort(new CardComparator());
 		return cardList;
 	}
 
