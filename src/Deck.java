@@ -1,6 +1,9 @@
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+// TODO Error handling and edge cases
+// TODO these method names are starting to make me think I should have used a stack
 public class Deck {
 	private List<Card> cards;
 	
@@ -19,6 +22,33 @@ public class Deck {
 		List<Card> topCut = cards.subList(0, cutPoint);
 		cards.removeAll(topCut); // cards is now lowCut
 		cards.addAll(topCut);
+	}
+	
+	public Card deal() {
+		Card card = cards.get(0);
+		cards.remove(0);
+		return card;
+	}
+	
+	public Card turnOver() {
+		return cards.get(0);
+	}
+	
+	// It's a small list so doing iterative search for now.
+	// Binary search would still be more efficient.
+	public int search(Card card) {
+		for(int i = 0; i < cards.size(); i++) {
+			if(card.equals(cards.get(i))) {
+				return i;
+			}
+		}
+		return -1; // error response meaning card not in deck
+	}
+	
+	public List<Card> newOrder(){
+		List<Card> cardList = new ArrayList<Card>();
+		// TODO implement
+		return cardList;
 	}
 
 	public List<Card> getCards() {
